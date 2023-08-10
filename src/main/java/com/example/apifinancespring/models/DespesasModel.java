@@ -4,6 +4,8 @@ package com.example.apifinancespring.models;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
+
+import com.example.apifinancespring.models.enums.StatusDespesa;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -18,7 +20,7 @@ public class DespesasModel  implements Serializable{
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private UUID id;
+    private Long id;
 
 
     @Column(unique = true, nullable = false)
@@ -40,7 +42,7 @@ public class DespesasModel  implements Serializable{
     private String descricao;
 
     @Column(nullable = false)
-    private BigDecimal valorDespesa;
+    private Integer valorDespesa;
 
     @Enumerated(EnumType.STRING)
     private StatusDespesa status;
@@ -49,11 +51,11 @@ public class DespesasModel  implements Serializable{
     private List<EmpenhoModel> empenhos;
 
     // Construtores, getters e setters
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -105,11 +107,11 @@ public class DespesasModel  implements Serializable{
         this.descricao = descricao;
     }
 
-    public BigDecimal getValorDespesa() {
+    public Integer getValorDespesa() {
         return valorDespesa;
     }
 
-    public void setValorDespesa(BigDecimal valorDespesa) {
+    public void setValorDespesa(Integer valorDespesa) {
         this.valorDespesa = valorDespesa;
     }
 
@@ -142,13 +144,7 @@ public class DespesasModel  implements Serializable{
 //        empenho.setDespesa(null);
 //    }
 
-    public enum StatusDespesa {
-        AGUARDANDO_EMPENHO,
-        PARCIALMENTE_EMPENHADA,
-        AGUARDANDO_PAGAMENTO,
-        PARCIALMENTE_PAGA,
-        PAGA
-    }
+
 
 
 }
